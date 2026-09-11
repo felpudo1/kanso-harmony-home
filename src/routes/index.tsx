@@ -1,24 +1,58 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Header } from "@/components/kanso/Header";
+import { Hero } from "@/components/kanso/Hero";
+import { ValueProps } from "@/components/kanso/ValueProps";
+import { Services } from "@/components/kanso/Services";
+import { Calculator, type CalculatorResult } from "@/components/kanso/Calculator";
+import { SafetySection } from "@/components/kanso/SafetySection";
+import { Footer } from "@/components/kanso/Footer";
+import { ContactModal, type ContactPrefill } from "@/components/kanso/ContactModal";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Kanso — Organización & Confort en Montevideo";
+const DESCRIPTION =
+  "Organización profesional de hogares en Montevideo: placares, cocinas y mudanzas. Calculá tu presupuesto y pedí un diagnóstico gratuito.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [prefill, setPrefill] = useState<ContactPrefill>();
+
+  const openWithService = (service: string) => {
+    setPrefill({ service });
+    setModalOpen(true);
+  };
+
+  const openWithCalculator = (result: CalculatorResult) => {
+    setPrefill(result);
+    setModalOpen(true);
+  };
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen">
+      <Header />
+      <main>
+        <Hero />
+        <ValueProps />
+        <Services onRequest={openWithService} />
+        <Calculator onRequestDiagnosis={openWithCalculator} />
+        <SafetySection />
+      </main>
+      <Footer />
+      <ContactModal open={modalOpen} onOpenChange={setModalOpen} prefill={prefill} />
     </div>
   );
 }
