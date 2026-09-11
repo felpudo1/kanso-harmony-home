@@ -24,7 +24,7 @@ export interface ContactPrefill {
 interface ContactModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  prefill?: ContactPrefill;
+  prefill?: ContactPrefill | undefined;
 }
 
 const emptyForm = {
@@ -38,7 +38,8 @@ const emptyForm = {
 
 export function ContactModal({ open, onOpenChange, prefill }: ContactModalProps) {
   const [form, setForm] = useState(emptyForm);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  type FieldKey = keyof typeof emptyForm;
+  const [errors, setErrors] = useState<Partial<Record<FieldKey, string>>>({});
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
@@ -60,10 +61,10 @@ export function ContactModal({ open, onOpenChange, prefill }: ContactModalProps)
     const parsed = leadSchema.safeParse(form);
 
     if (!parsed.success) {
-      const nextErrors: Record<string, string> = {};
+      const nextErrors: Partial<Record<FieldKey, string>> = {};
       for (const issue of parsed.error.issues) {
-        const key = String(issue.path[0]);
-        if (!nextErrors[key]) nextErrors[key] = issue.message;
+        const key = issue.path[0] as FieldKey;
+        if (key && !nextErrors[key]) nextErrors[key] = issue.message;
       }
       setErrors(nextErrors);
       return;
