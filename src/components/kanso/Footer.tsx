@@ -13,7 +13,7 @@ export function Footer() {
             Organización & Confort
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
-            Base en Parque Batlle, Montevideo. Trabajamos en Montevideo y área metropolitana.
+            Atención en Montevideo y área metropolitana.
           </p>
         </div>
 
