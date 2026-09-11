@@ -14,6 +14,7 @@ const DESCRIPTION =
   "Organización profesional de hogares en Montevideo: placares, cocinas y mudanzas. Calculá tu presupuesto y pedí un diagnóstico gratuito.";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: TITLE },
