@@ -5,7 +5,7 @@ import { Hero } from "@/components/kanso/Hero";
 import { ValueProps } from "@/components/kanso/ValueProps";
 import { Services } from "@/components/kanso/Services";
 import { Calculator, type CalculatorResult } from "@/components/kanso/Calculator";
-import { SafetySection } from "@/components/kanso/SafetySection";
+
 import { Footer } from "@/components/kanso/Footer";
 import { ContactModal, type ContactPrefill } from "@/components/kanso/ContactModal";
 
@@ -49,7 +49,6 @@ function Index() {
         <ValueProps />
         <Services onRequest={openWithService} />
         <Calculator onRequestDiagnosis={openWithCalculator} />
-        <SafetySection />
       </main>
       <Footer />
       <ContactModal open={modalOpen} onOpenChange={setModalOpen} prefill={prefill} />
