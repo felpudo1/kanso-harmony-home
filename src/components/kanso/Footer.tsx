@@ -6,7 +6,7 @@ export const INSTAGRAM_URL = "https://instagram.com";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-sand/70">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-2">
         <div>
           <p className="text-lg font-semibold">Kanso</p>
           <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
@@ -14,14 +14,6 @@ export function Footer() {
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
             Atención en Montevideo y área metropolitana.
-          </p>
-        </div>
-
-        <div className="text-sm text-muted-foreground">
-          <p className="font-semibold text-foreground">Empresa formalizada</p>
-          <p className="mt-3">
-            Actividad registrada según normativa uruguaya: BPS, DGI y seguro de accidentes laborales
-            BSE.
           </p>
         </div>
 
