@@ -1,7 +1,7 @@
 import { Instagram, MessageCircle } from "lucide-react";
 
 export const WHATSAPP_URL = "https://wa.me/59899123456";
-export const INSTAGRAM_URL = "https://instagram.com/kanso.uy";
+export const INSTAGRAM_URL = "https://instagram.com";
 
 export function Footer() {
   return (
