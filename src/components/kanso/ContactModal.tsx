@@ -88,7 +88,7 @@ export function ContactModal({ open, onOpenChange, prefill }: ContactModalProps)
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Solicitar diagnóstico gratuito</DialogTitle>
+          <DialogTitle>Solicitar cotización final</DialogTitle>
           <DialogDescription>
             Dejanos tus datos y coordinamos una visita o videollamada sin costo.
           </DialogDescription>
