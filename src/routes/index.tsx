@@ -49,7 +49,6 @@ function Index() {
         <ValueProps />
         <Services onRequest={openWithService} />
         <Calculator onRequestDiagnosis={openWithCalculator} />
-        
       </main>
       <Footer />
       <ContactModal open={modalOpen} onOpenChange={setModalOpen} prefill={prefill} />
