@@ -30,7 +30,7 @@ export function Hero() {
             </Button>
           </div>
           <p className="mt-7 text-sm text-muted-foreground">
-            Base en Parque Batlle · Montevideo y área metropolitana
+            Atención en Montevideo y área metropolitana
           </p>
         </div>
 
